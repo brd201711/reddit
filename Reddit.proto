@@ -1,0 +1,45 @@
+option java_package="redditanalysis";
+
+message Keyword {
+  required string keyword = 1;
+  required float score = 2;
+}
+
+message Comment {
+  required string body = 1;
+  required string body_html = 2;
+  required string author = 3;
+  required int32 ups = 4;
+  required int32 score = 5;
+  required int32 downs = 6;
+  // Add user? other data?
+}
+
+message SubRedditData {
+  required string selftext = 1;
+  required string selftext_html = 2;
+  required int32 num_comments = 3;
+  required int32 score = 4;
+  repeated Comment comments = 5;
+  repeated Keyword keywords = 6;
+  required int32 ups = 7;
+  required string url = 8;
+  required string title = 9;
+  required int32 downs = 10;
+}
+
+message SubReddit {
+  required int32 rank = 1;
+  required string subreddit_title = 2;
+  required string url = 3;
+  optional int32 subscribers = 4;
+  optional float growth_rate = 5;
+  repeated SubRedditData subreddit_data = 6;
+  required int64 timestamp = 7;
+}
+
+message Reddits {
+  repeated SubReddit recent_activity = 1;
+  repeated SubReddit subscribers = 2;
+  repeated SubReddit growth_over_24h = 3;
+}
