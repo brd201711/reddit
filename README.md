@@ -1,2 +1,1 @@
-# reddit
-# analysis
+# project files for reddit analysis
